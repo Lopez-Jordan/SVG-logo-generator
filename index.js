@@ -1,6 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-// const shapes = require('./lib/shapes');
+const shapes = require('./lib/shapes');
 
 function promptUser(){
     inquirer.prompt([
