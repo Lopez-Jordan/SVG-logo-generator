@@ -1,6 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const shapes = require('./lib/shapes');
+const { Circle, Square, Triangle } = require('./lib/shapes');
+
 
 function promptUser(){
     inquirer.prompt([
@@ -17,7 +18,7 @@ function promptUser(){
         {
             type : 'list',
             name : 'shape',
-            message : 'What do you want the three letters for your logo to be ?',
+            message : 'What do you want the shape of your logo to be ?',
             choices : ["Circle","Triangle","Square"]
         },
         {
@@ -34,9 +35,6 @@ function promptUser(){
             error ? console.log("error generating logo") : console.log("success");
         });
     })
-    .catch((error)=>{
-        console.log("Error generating answers");
-    });
 };
 
 
