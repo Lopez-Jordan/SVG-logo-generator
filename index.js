@@ -28,7 +28,7 @@ function promptUser(){
         }
     ])
     .then((response)=>{
-        console.log(response);
+        console.log("Success! SVG logo was created");
 
         const created = genLogo(response);
         fs.writeFile('logo.svg', created, (error) =>{
