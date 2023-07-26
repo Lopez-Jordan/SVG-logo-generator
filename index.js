@@ -1,9 +1,9 @@
 const fs = require('fs');
-const inquirer = requier('inquirer');
-const shapes = require('./lib/shapes')
+const inquirer = require('inquirer');
+// const shapes = require('./lib/shapes');
 
 function promptUser(){
-    inquirer.prompt[
+    inquirer.prompt([
         {
             type : 'input',
             name : 'letters',
@@ -25,12 +25,11 @@ function promptUser(){
             name : 'shapeColor',
             message : 'What do you want the shape color to be? (color or hex)'
         }
-    ]
+    ])
     .then((response)=>{
+        console.log(response);
 
-
-
-        const created = genLogo();
+        const created = genLogo(response);
         fs.writeFile('logo.svg', created, (error) =>{
             error ? console.log("error generating logo") : console.log("success");
         });
@@ -41,7 +40,20 @@ function promptUser(){
 };
 
 
-
+function genLogo(data){
+    if (data.shape === 'Triangle'){
+        const triangle = new Triangle(data.letters, data.textColor, data.shapeColor);
+        return triangle.render(); //should be a string
+    }
+    if (data.shape === 'Square'){
+        const square = new Square(data.letters, data.textColor, data.shapeColor);
+        return square.render();
+    }
+    if (data.shape === 'Circle'){
+        const circle = new Circle(data.letters, data.textColor, data.shapeColor);
+        return circle.render();
+    }
+}
 
 
 
@@ -50,22 +62,17 @@ init();
 
 function init () {
     promptUser();
-
-    const created = genLogo();
-    fs.writeFile('logo.svg', created, (error) =>{
-        error ? console.log("error generating logo") : console.log("success");
-    });
-
 }
 
+
+// DONE
 // use inquirer to accept user input about:
     //1: 3 letters (for text of the SVG)
     //2: text color (color or hex)
     //3: shape - circle, triangle, square
     //4: shape color (color or hex)
 
-
-    const createLogo = genLogo();
+// DONE
 // use fs to write file with (logo.svg, createLogo)
 
 
