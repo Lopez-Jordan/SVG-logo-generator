@@ -1,3 +1,63 @@
+const fs = require('fs');
+const inquirer = requier('inquirer');
+const shapes = require('./lib/shapes')
+
+function promptUser(){
+    inquirer.prompt[
+        {
+            type : 'input',
+            name : 'letters',
+            message : 'What do you want the three letters for your logo to be ?'
+        },
+        {
+            type : 'input',
+            name : 'textColor',
+            message : 'What do you want the text color to be? (color or hex)'
+        },
+        {
+            type : 'list',
+            name : 'shape',
+            message : 'What do you want the three letters for your logo to be ?',
+            choices : ["Circle","Triangle","Square"]
+        },
+        {
+            type : 'input',
+            name : 'shapeColor',
+            message : 'What do you want the shape color to be? (color or hex)'
+        }
+    ]
+    .then((response)=>{
+
+
+
+        const created = genLogo();
+        fs.writeFile('logo.svg', created, (error) =>{
+            error ? console.log("error generating logo") : console.log("success");
+        });
+    })
+    .catch((error)=>{
+        console.log("Error generating answers");
+    });
+};
+
+
+
+
+
+
+
+init();
+
+function init () {
+    promptUser();
+
+    const created = genLogo();
+    fs.writeFile('logo.svg', created, (error) =>{
+        error ? console.log("error generating logo") : console.log("success");
+    });
+
+}
+
 // use inquirer to accept user input about:
     //1: 3 letters (for text of the SVG)
     //2: text color (color or hex)
