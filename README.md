@@ -5,6 +5,7 @@ In this project you are able to generate a custom logo (shape with 3 letters ins
 
 ## Installation
 To install, you must 1: clone the project, 2: install inquirer by running `node install inquirer@8.2.4` and run `node index.js` to start generating your logo!
+click [HERE](https://drive.google.com/file/d/12_-6392G5xreUXjSgHT5U9JUkAND0Haf/view) for a video tutorial
 
 ## Tests
 if you would like to test, you must run `npm install jest` on your command line then run `npm run test`
